@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\..\Downloads\Telegram Desktop\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\..\Downloads\Telegram Desktop\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +63,61 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Book.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookGenre.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Complaint.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComplaintFreeze.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="Genre.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reading.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadingStatus.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reason.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Review.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleApplication.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShootNBunnyBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShootNBunnyBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShootNBunnyBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShootNBunnyBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShootNBunnyBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>ShootNBunnyBD.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +130,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,13 +170,39 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="ShootNBunnyBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShootNBunnyBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ShootNBunnyBD.edmx.diagram">
+      <DependentUpon>ShootNBunnyBD.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Menu\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ShootNBunnyBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ShootNBunnyBD.Context.cs</LastGenOutput>
+      <DependentUpon>ShootNBunnyBD.edmx</DependentUpon>
+    </Content>
+    <Content Include="ShootNBunnyBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShootNBunnyBD.edmx</DependentUpon>
+      <LastGenOutput>ShootNBunnyBD.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

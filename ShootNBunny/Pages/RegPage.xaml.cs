@@ -13,17 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ShootNBunny
+namespace ShootNBunny.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RegPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegPage : Page
     {
-        public MainWindow()
+        public RegPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.FunctionPages.MainPage());
+        }
+
+        private void LoginTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void RegBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
