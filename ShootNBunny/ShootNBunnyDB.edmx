@@ -36,6 +36,7 @@
           <Property Name="AuthorID" Type="int" />
           <Property Name="ReviewID" Type="int" />
           <Property Name="BookID" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="ComplaintFreeze">
           <Key>
@@ -86,6 +87,7 @@
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Rate" Type="tinyint" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Frozen" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RoleApplication">
           <Key>
@@ -438,6 +440,7 @@
           <Property Name="AuthorID" Type="Int32" />
           <Property Name="ReviewID" Type="Int32" />
           <Property Name="BookID" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Complaint_Book" FromRole="Complaint" ToRole="Book" />
           <NavigationProperty Name="Reason" Relationship="Self.FK_Complaint_Reason" FromRole="Complaint" ToRole="Reason" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Complaint_Review" FromRole="Complaint" ToRole="Review" />
@@ -500,6 +503,7 @@
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rate" Type="Byte" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Frozen" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Review" FromRole="Review" ToRole="Complaint" />
           <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
         </EntityType>
@@ -862,6 +866,7 @@
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
                 <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -918,6 +923,7 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Frozen" ColumnName="Frozen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

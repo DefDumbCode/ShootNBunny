@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShootNBunny.Pages.FunctionPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace ShootNBunny.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        public static List<User> users = Core.Context.User.ToList();
         public AuthPage()
         {
             InitializeComponent();
@@ -35,7 +37,20 @@ namespace ShootNBunny.Pages
 
         private void AuthBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            User login_try = users.FirstOrDefault(a => a.Login == LoginTB.Text);
+            if (login_try != null)
+            {
+                if (PasswordTB.Text == login_try.Password)
+                {
+                    MainWindow.user = login_try;
+                    NavigationService.Navigate(new MainPage());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Неправильно введен логин или пароль!");
+                PasswordTB.Text = "";
+            }
         }
 
         private void ToRegBtn_Click(object sender, RoutedEventArgs e)

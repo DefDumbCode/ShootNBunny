@@ -21,6 +21,11 @@
                      Height="30" Margin="0 0 0 10"
                      TextChanged="LoginTB_TextChanged"/>
 
+            <TextBlock Text="Email" FontSize="18"/>
+            <TextBox x:Name="EmailTB" 
+                    Height="30" Margin="0 0 0 10"
+                    TextChanged="LoginTB_TextChanged"/>
+
             <TextBlock Text="Пароль" FontSize="18"/>
             <TextBox x:Name="PasswordTB" 
                      Height="30" Margin="0 0 0 10"
@@ -32,7 +37,7 @@
 
             <Button x:Name="RegBtn" Content="Вход"
                     Height="40" Margin="0 20 0 0"
-                    Click="RegBtn_Click"/>
+                    Click="RegBtn_Click" IsEnabled="False"/>
         </StackPanel>
     </Grid>
 </Page>

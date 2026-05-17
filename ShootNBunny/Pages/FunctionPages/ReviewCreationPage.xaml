@@ -1,0 +1,57 @@
+﻿<Page x:Class="ShootNBunny.Pages.FunctionPages.ReviewCreationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShootNBunny.Pages.FunctionPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReviewCreationPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Label VerticalAlignment="Center"
+                Margin="20 0 10 0"
+                FontSize="20"
+                Content="Отзыв на книгу:"/>
+            <TextBlock x:Name="ComplainObjectTB" VerticalAlignment="Center"
+               Margin="0 10 20 10"
+               FontSize="20"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label Content="Оценка:" VerticalAlignment="Center"
+               Margin="20 0 10 0"
+               FontSize="18"/>
+            <TextBox x:Name="RateTB" Width="50" Height="35" Margin="0"
+                     FontSize="18"
+                     TextChanged="RateTB_TextChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label
+               Margin="20 0"
+               FontSize="18"
+               Content="Комментарий"/>
+            <TextBox x:Name="CommentTB" Height="125" Margin="20 10" Padding="10"
+                FontSize="16" TextChanged="RateTB_TextChanged"/>
+        </StackPanel>
+
+        <Button x:Name="SendBtn" Grid.Row="3" HorizontalAlignment="Right"
+            Width="150" Height="50" Margin="20 0"
+            Content="Отправить"
+            Click="SendBtn_Click" IsEnabled="False"/>
+
+        <Button x:Name="CancelBtn" Grid.Row="3" HorizontalAlignment="Left"
+            Width="150" Height="50" Margin="20 0"
+            Content="Отмена"
+            Click="CancelBtn_Click"/>
+
+    </Grid>
+</Page>

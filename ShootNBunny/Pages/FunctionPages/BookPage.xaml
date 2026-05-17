@@ -1,0 +1,126 @@
+﻿<Page x:Class="ShootNBunny.Pages.FunctionPages.BookPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShootNBunny.Pages.FunctionPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BookPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="CoverImg" Source="{Binding CoverPath}" Grid.Row="0" Width="200" Height="250"/>
+
+        <StackPanel Orientation="Vertical" Margin="20 10" Grid.Column="1" Grid.Row="0" CanVerticallyScroll="True">
+            <TextBlock Text="{Binding Name}" FontSize="20"/>
+            <TextBlock Text="{Binding User.Name, StringFormat= Автор {0}}" FontSize="20"/>
+            <TextBlock Text="{Binding Rate, StringFormat= Рейтинг: {0}}" FontSize="18"/>
+            <TextBlock Text="{Binding ReviewAmnt}" FontSize="18"/>
+            <TextBlock Text="{Binding BooksGenres, StringFormat= Жанры: {0}}"
+                       TextWrapping="Wrap" FontSize="18"/>
+            <TextBlock Text="{Binding Description}"
+                       TextWrapping="Wrap" FontSize="18"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="ReadBtn" Grid.Row="0" Grid.Column="0"
+                     Width="150" Height="35"
+                     Content="Читать" Click="ReadBtn_Click"/>
+
+                <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                    <Label Content="Статус чтения" Margin="10 5"/>
+                    <ComboBox x:Name="ReadStatusCB"
+                     Width="150" Height="35"
+                     SelectionChanged="ReadStatusCB_SelectionChanged"/>
+                </StackPanel>
+
+                <Label Content="Пожаловаться на" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center"/>
+                <Button x:Name="ComplainBookBtn" Grid.Row="0" Grid.Column="1" 
+                        Height="30"  Margin="10"
+                        Content="Книгу"
+                        Click="ComplainBookBtn_Click"/>
+                <Button x:Name="ComplainAuthorBtn" Grid.Row="0" Grid.Column="2" 
+                        Height="30"  Margin="10"
+                        Content="Автора"
+                        Click="ComplainAuthorBtn_Click"/>
+
+                <Button x:Name="FreezeBookBtn" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                        VerticalAlignment="Top"
+                        Height="30" Width="120" Margin="10 15"
+                        Content="Заморозить книгу"
+                        Click="FreezeBookBtn_Click"/>
+                
+                <Button x:Name="FreezeReviewBtn" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                        VerticalAlignment="Bottom"
+                        Height="30" Width="120" Margin="10 15"
+                        Content="Заморозить отзыв"
+                        Click="FreezeReviewBtn_Click"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Озывы"/>
+                <Button x:Name="CreateReviewBtn" HorizontalAlignment="Right"
+                        Width="120" Margin="10 5"
+                        Content="Написать отзыв"
+                        Click="CreateReviewBtn_Click"/>
+                <ListBox x:Name="ReviewsLB" Grid.Row="1"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" d:ItemsSource="{d:SampleData ItemCount=5}"
+                    Padding="10 5">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0 0 0 5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="ReviewAuthor" Text="{Binding User.Name}" Margin="0 0 10 0"/>
+                                    <TextBlock x:Name="ReviewRate" Text="{Binding Rate, StringFormat= Оценка: {0}}"/>
+                                </StackPanel>
+
+                                <TextBlock x:Name="ReviewText" Text="{Binding Text}"
+                                    TextWrapping="Wrap"
+                                    Margin="0 5 0 0"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="ComplianBtn" HorizontalAlignment="Left"
+                                        Height="20" Width="20" Margin="0 5 10 0"
+                                        Click="ComplianBtn_Click">
+                                        <Button.Content>
+                                            <Image/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

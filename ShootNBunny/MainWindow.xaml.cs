@@ -20,10 +20,11 @@ namespace ShootNBunny
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static User user;
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.FunctionPages.MainPage());
+            MainFrame.Navigate(new Pages.AuthPage());
         }
     }
 }

@@ -16,33 +16,22 @@ using System.Windows.Shapes;
 namespace ShootNBunny.Pages.FunctionPages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для ReadingPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ReadingPage : Page
     {
-        public MainPage()
+        public ReadingPage(Book book)
         {
             InitializeComponent();
+            BookTextTB.Text = book.Text;
         }
 
-        private void RoleBtn_Click(object sender, RoutedEventArgs e)
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void BooklistBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BooksCatalogBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

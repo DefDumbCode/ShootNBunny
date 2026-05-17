@@ -20,6 +20,7 @@ namespace ShootNBunny
         public Nullable<int> AuthorID { get; set; }
         public Nullable<int> ReviewID { get; set; }
         public Nullable<int> BookID { get; set; }
+        public string Comment { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Reason Reason { get; set; }

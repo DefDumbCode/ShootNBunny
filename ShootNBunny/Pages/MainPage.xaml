@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
         <ScrollViewer>
@@ -28,7 +28,8 @@
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="50" Width="50" Margin="5"/>
-                                <Label Content="Каталог книг" VerticalAlignment="Center"/>
+                                <Label Content="Каталог книг" VerticalAlignment="Center"
+                                       FontSize="10"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -38,7 +39,8 @@
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="50" Width="50"/>
-                                <Label Content="Списки книг" VerticalAlignment="Center"/>
+                                <Label Content="Списки книг" VerticalAlignment="Center"
+                                       FontSize="10"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -47,8 +49,9 @@
                             Click="RoleBtn_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Height="50" Width="50"/>
-                                <Label Content="Кнопка роли" VerticalAlignment="Center"/>
+                                <Image x:Name="RoleImg" Height="50" Width="50"/>
+                                <Label x:Name="RoleAct" Content="Кнопка роли" VerticalAlignment="Center"
+                                       FontSize="10"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -56,14 +59,15 @@
 
                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom"
                             Margin="5 0 5 20">
-                    <TextBlock x:Name="FrozenStatusTB" Text="Ты заморожен"
+                    <TextBlock x:Name="FrozenStatusTB"
                                Margin="0 0 0 10"/>
                     <Button x:Name="ProfileBtn" Height="60"
                             Click="ProfileBtn_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="50" Width="50"/>
-                                <Label Content="Профиль" VerticalAlignment="Center"/>
+                                <Label Content="Профиль" VerticalAlignment="Center"
+                                       FontSize="10"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
