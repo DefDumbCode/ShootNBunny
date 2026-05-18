@@ -20,28 +20,54 @@ namespace ShootNBunny.Pages.FunctionPages
     /// </summary>
     public partial class FreezeComplainPage : Page
     {
-        public FreezeComplainPage()
+        public string complaintObj;
+        public int objID;
+        public FreezeComplainPage(Review review)
         {
             InitializeComponent();
+            complaintObj = "Отзыв";
+            objID = review.ID;
         }
 
-        private void CommentTB_TextChanged(object sender, TextChangedEventArgs e)
+        public FreezeComplainPage(User user)
         {
-            if (!String.IsNullOrEmpty(CommentTB.Text))
-            {
-                SendBtn.IsEnabled = true;
-            }
+            InitializeComponent();
+            complaintObj = "Автор";
+            objID = user.ID;
+        }
+
+        public FreezeComplainPage(Book book)
+        {
+            InitializeComponent();
+            complaintObj = "Книга";
+            objID = book.ID;
         }
 
         private void SendBtn_Click(object sender, RoutedEventArgs e)
         {
-            ComplaintFreeze application = new ComplaintFreeze()
+            UnfreezeApplication complaint = new UnfreezeApplication()
             {
                 UserID = MainWindow.user.ID,
-                Description = CommentTB.Text
+                AuthorID = null,
+                ReviewID = null,
+                BookID = null,
+                Comment = CommentTB.Text
             };
 
-            Core.Context.ComplaintFreeze.Add(application);
+            switch (complaintObj)
+            {
+                case "Отзыв":
+                    complaint.ReviewID = objID;
+                    break;
+                case "Автор":
+                    complaint.AuthorID = objID;
+                    break;
+                case "Книга":
+                    complaint.BookID = objID;
+                    break;
+            }
+
+            Core.Context.UnfreezeApplication.Add(complaint);
             Core.Context.SaveChanges();
 
             MessageBox.Show("Жалоба успешно отправлена");
@@ -58,6 +84,13 @@ namespace ShootNBunny.Pages.FunctionPages
                     NavigationService.GoBack();
                 }
             }
+        }
+
+
+        private void CommentTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SendBtn.IsEnabled = true;
+
         }
     }
 }

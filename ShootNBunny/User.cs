@@ -24,6 +24,8 @@ namespace ShootNBunny
             this.Reading = new HashSet<Reading>();
             this.Review = new HashSet<Review>();
             this.RoleApplication = new HashSet<RoleApplication>();
+            this.UnfreezeApplication = new HashSet<UnfreezeApplication>();
+            this.UnfreezeApplication1 = new HashSet<UnfreezeApplication>();
         }
     
         public int ID { get; set; }
@@ -49,5 +51,9 @@ namespace ShootNBunny
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoleApplication> RoleApplication { get; set; }
         public virtual Roles Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UnfreezeApplication> UnfreezeApplication { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UnfreezeApplication> UnfreezeApplication1 { get; set; }
     }
 }

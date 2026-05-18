@@ -82,7 +82,7 @@ namespace ShootNBunny.Pages.FunctionPages
         {
             Button button = sender as Button;
             Book book = button.DataContext as Book;
-            NavigationService.Navigate(new FreezeComplainPage());
+            NavigationService.Navigate(new FreezeComplainPage(book));
         }
 
         private void CreateNewBtn_Click(object sender, RoutedEventArgs e)

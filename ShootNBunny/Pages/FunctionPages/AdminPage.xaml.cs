@@ -24,6 +24,7 @@ namespace ShootNBunny.Pages.FunctionPages
         public static List<User> frozenUsers = Core.Context.User.Where(u => u.Frozen).ToList();
         public static List<Book> frozenBooks = Core.Context.Book.Where(b => b.Frozen).ToList();
         public static List<Review> frozenReviews = Core.Context.Review.Where(r => r.Frozen).ToList();
+        public static List<UnfreezeApplication> unfreezeApplications = Core.Context.UnfreezeApplication.ToList();
         public static List<RoleApplication> roleApplications = Core.Context.RoleApplication.Where(app => app.User.Roles.Name != "Автор").ToList();
         public static List<User> users = Core.Context.User.ToList();
         public static List<ComplaintFreeze> complaintFreezes = Core.Context.ComplaintFreeze.ToList();
@@ -105,6 +106,8 @@ namespace ShootNBunny.Pages.FunctionPages
             frozenReviews = Core.Context.Review.Where(r => r.Frozen).ToList();
             roleApplications = Core.Context.RoleApplication.Where(app => app.User.Roles.Name != "Автор").ToList();
             users = Core.Context.User.ToList();
+            unfreezeApplications = Core.Context.UnfreezeApplication.ToList();
+
 
             ComplaintLB.ItemsSource = complaints.ToList();
             FrozenBooksLB.ItemsSource = frozenBooks.ToList();
@@ -112,6 +115,8 @@ namespace ShootNBunny.Pages.FunctionPages
             FrozenReviewsLB.ItemsSource = frozenReviews.ToList();
             ApplicationLB.ItemsSource = roleApplications.ToList();
             UsersLB.ItemsSource = users.ToList();
+            FreezeComplaintLB.ItemsSource = unfreezeApplications.ToList();
+
         }
 
         private void AcceptBtn_Click(object sender, RoutedEventArgs e)
@@ -151,9 +156,9 @@ namespace ShootNBunny.Pages.FunctionPages
         private void AcceptUnfreezeBtn_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            ComplaintFreeze application = (ComplaintFreeze)button.DataContext;
+            UnfreezeApplication application = (UnfreezeApplication)button.DataContext;
             application.User.Frozen = false;
-            Core.Context.ComplaintFreeze.Remove(application);
+            Core.Context.UnfreezeApplication.Remove(application);
             Core.Context.SaveChanges();
             Update();
         }
@@ -161,8 +166,8 @@ namespace ShootNBunny.Pages.FunctionPages
         private void RejectUnfreezeBtn_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            ComplaintFreeze application = (ComplaintFreeze)button.DataContext;
-            Core.Context.ComplaintFreeze.Remove(application);
+            UnfreezeApplication application = (UnfreezeApplication)button.DataContext;
+            Core.Context.UnfreezeApplication.Remove(application);
             Core.Context.SaveChanges();
             Update();
         }

@@ -18,8 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"
@@ -46,16 +45,21 @@
                     Content="Хочу стать автором"
                     Click="AuthorBtn_Click"/>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="20 0">
-                <TextBlock Grid.Row="2" Text="{Binding FrozenStatus}" HorizontalAlignment="Left" 
-                    Height="35" Width="200" FontSize="16"/>
-                <Button x:Name="FreezeComplaintBtn"
-                        Height="35" Width="125" Margin="20 0"
-                        Content="Оспорить"
-                        Click="FreezeComplaintBtn_Click"/>
-            </StackPanel>
-            <TextBlock x:Name="FreezeReasonTB" Grid.Row="3" 
-                       Margin="20 0" Text="Причина заморозки: "/>
+            <Label x:Name="FreezeReasonLbl" Grid.Row="2" Content="Вы заморожены! Причины:" Margin="20 0"/>
+            <ListBox x:Name="ComplaintsLB" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20 30 20 20" d:ItemsSource="{d:SampleData ItemCount=5}"
+                Padding="10 5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0 0 0 5">
+                            <TextBlock x:Name="BookName" Text="{Binding ComplaintObjName}" Margin="0 0 10 0"/>
+                                <TextBlock Text="{Binding Reason.Name, StringFormat=Причина: {0}}" Margin="0 0 10 0"/>
+                                <Button x:Name="UnfreezeAppBtn" Width="80" Margin="0 5" Content="Обжаловать" HorizontalAlignment="Left"
+                                    Click="UnfreezeAppBtn_Click"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         
         <Label Grid.Column="1" VerticalAlignment="Top" 
@@ -75,6 +79,19 @@
                         <TextBlock x:Name="ReviewText" Text="{Binding Text}"
                             TextWrapping="Wrap"
                             Margin="0 5 0 0"/>
+                        <Button x:Name="UnfreezeReview" HorizontalAlignment="Left" Width="80" Height="30" Click="UnfreezeReview_Click">
+                            <TextBlock Text="Оспорить заморозку" TextWrapping="Wrap" FontSize="8"/>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Frozen}"
+                                                Value="False">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

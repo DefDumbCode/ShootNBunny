@@ -21,6 +21,7 @@ namespace ShootNBunny
             this.Complaint = new HashSet<Complaint>();
             this.Reading = new HashSet<Reading>();
             this.Review = new HashSet<Review>();
+            this.UnfreezeApplication = new HashSet<UnfreezeApplication>();
         }
     
         public int ID { get; set; }
@@ -41,5 +42,7 @@ namespace ShootNBunny
         public virtual ICollection<Reading> Reading { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UnfreezeApplication> UnfreezeApplication { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace ShootNBunny.Pages.FunctionPages
     public partial class ProfilePage : Page
     {
         public User user_ {  get; set; }
+        public static List<Complaint> userComplaints = Core.Context.Complaint.Where(c => c.AuthorID == MainWindow.user.ID && c.Satisfied).ToList();
         public ProfilePage(User user)
         {
             InitializeComponent();
@@ -31,19 +32,12 @@ namespace ShootNBunny.Pages.FunctionPages
 
             if(!user_.Frozen)
             {
-                FreezeComplaintBtn.Visibility = Visibility.Hidden;
+                FreezeReasonLbl.Visibility = Visibility.Hidden;
+                ComplaintsLB.Visibility = Visibility.Hidden;
             }
             else
             {
-                List<string> complaint_reasons = Core.Context.Complaint.Where(c => (c.AuthorID == user.ID 
-                || c.Review.UserID == user.ID 
-                || c.Book.User.ID == user.ID)
-                && c.Satisfied).Select(c => c.Reason.Name).ToList();
-                foreach(string reason in complaint_reasons)
-                {
-                    FreezeReasonTB.Text += reason;
-                    FreezeReasonTB.Text += "\n";
-                }
+                ComplaintsLB.ItemsSource = userComplaints;
             }
 
             if (user.Roles.Name != "Читатель")
@@ -65,9 +59,17 @@ namespace ShootNBunny.Pages.FunctionPages
             }
         }
 
-        private void FreezeComplaintBtn_Click(object sender, RoutedEventArgs e)
+
+        private void UnfreezeAppBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FreezeComplainPage());
+            NavigationService.Navigate(new FreezeComplainPage(MainWindow.user));
+        }
+
+        private void UnfreezeReview_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Review review = button.DataContext as Review;
+            NavigationService.Navigate(new FreezeComplainPage(review));
         }
     }
 }

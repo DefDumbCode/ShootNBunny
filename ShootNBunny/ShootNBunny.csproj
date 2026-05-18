@@ -66,20 +66,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Book.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BookGenre.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Complaint.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ComplaintFreeze.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="Genre.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\BookPreview.cs" />
     <Compile Include="Logic\ComplaintPreview.cs" />
@@ -131,43 +131,46 @@
       <DependentUpon>ReviewCreationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reading.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ReadingStatus.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Reason.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleApplication.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyyDB.Context.cs">
+    <Compile Include="ShootNBunnyDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyyDB.Context.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyyDB.cs">
+    <Compile Include="ShootNBunnyDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyyDB.Designer.cs">
+    <Compile Include="ShootNBunnyDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnfreezeApplication.cs">
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -286,12 +289,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="ShootNBunnyyDB.edmx">
+    <EntityDeploy Include="ShootNBunnyDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShootNBunnyyDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShootNBunnyDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ShootNBunnyyDB.edmx.diagram">
-      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
+    <None Include="ShootNBunnyDB.edmx.diagram">
+      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -309,15 +312,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ShootNBunnyyDB.Context.tt">
+    <Content Include="ShootNBunnyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
-      <LastGenOutput>ShootNBunnyyDB.Context.cs</LastGenOutput>
+      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
+      <LastGenOutput>ShootNBunnyDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ShootNBunnyyDB.tt">
+    <Content Include="ShootNBunnyDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
-      <LastGenOutput>ShootNBunnyyDB.cs</LastGenOutput>
+      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
+      <LastGenOutput>ShootNBunnyDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

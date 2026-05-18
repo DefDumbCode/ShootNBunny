@@ -4,25 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6291b4c1c7844a5abc0fcf882f13ecf9" Name="Diagram1">
+      <Diagram DiagramId="8edc8fa3edfe41e8921d02373769a871" Name="Diagram1">
         <EntityTypeShape EntityType="ShootNBunnyModel.Book" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.BookGenre" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Complaint" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.ComplaintFreeze" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Genre" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Reading" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.ReadingStatus" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Reason" Width="1.5" PointX="8.25" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Review" Width="1.5" PointX="10.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.RoleApplication" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.Roles" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.BookGenre" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Complaint" Width="1.5" PointX="10.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.ComplaintFreeze" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Genre" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Reading" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.ReadingStatus" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Reason" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Review" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.RoleApplication" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.Roles" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ShootNBunnyModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShootNBunnyModel.User" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.UnfreezeApplication" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShootNBunnyModel.User" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Book_User" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_BookGenre_Book" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Complaint_Book" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Reading_Book" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Review_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="ShootNBunnyModel.FK_UnfreezeApplication_Book" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_BookGenre_Genre" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Complaint_Reason" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Complaint_Review" ManuallyRouted="false" />
@@ -32,9 +34,12 @@
         <AssociationConnector Association="ShootNBunnyModel.FK_Reading_ReadingStatus" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Reading_User" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_Review_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ShootNBunnyModel.FK_UnfreezeApplication_Review" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_RoleApplication_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_RoleApplication_User" ManuallyRouted="false" />
         <AssociationConnector Association="ShootNBunnyModel.FK_User_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ShootNBunnyModel.FK_UnfreezeApplication_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ShootNBunnyModel.FK_UnfreezeApplication_User1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

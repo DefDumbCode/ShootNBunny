@@ -116,6 +116,17 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UnfreezeApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AuthorID" Type="int" />
+          <Property Name="ReviewID" Type="int" />
+          <Property Name="BookID" Type="int" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -320,6 +331,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UnfreezeApplication_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeApplication_Review">
+          <End Role="Review" Type="Self.Review" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Review">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeApplication_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -345,6 +404,7 @@
           <EntitySet Name="RoleApplication" EntityType="Self.RoleApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnfreezeApplication" EntityType="Self.UnfreezeApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
             <End Role="User" EntitySet="User" />
@@ -410,6 +470,22 @@
             <End Role="User" EntitySet="User" />
             <End Role="RoleApplication" EntitySet="RoleApplication" />
           </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_Book" Association="Self.FK_UnfreezeApplication_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_Review" Association="Self.FK_UnfreezeApplication_Review">
+            <End Role="Review" EntitySet="Review" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_User" Association="Self.FK_UnfreezeApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_User1" Association="Self.FK_UnfreezeApplication_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Roles" Association="Self.FK_User_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
@@ -437,6 +513,7 @@
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Book" FromRole="Book" ToRole="Complaint" />
           <NavigationProperty Name="Reading" Relationship="Self.FK_Reading_Book" FromRole="Book" ToRole="Reading" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Book" FromRole="Book" ToRole="Review" />
+          <NavigationProperty Name="UnfreezeApplication" Relationship="Self.FK_UnfreezeApplication_Book" FromRole="Book" ToRole="UnfreezeApplication" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -526,6 +603,7 @@
           <NavigationProperty Name="Book" Relationship="Self.FK_Review_Book" FromRole="Review" ToRole="Book" />
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Review" FromRole="Review" ToRole="Complaint" />
           <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
+          <NavigationProperty Name="UnfreezeApplication" Relationship="Self.FK_UnfreezeApplication_Review" FromRole="Review" ToRole="UnfreezeApplication" />
         </EntityType>
         <EntityType Name="RoleApplication">
           <Key>
@@ -557,6 +635,21 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="UnfreezeApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AuthorID" Type="Int32" />
+          <Property Name="ReviewID" Type="Int32" />
+          <Property Name="BookID" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_UnfreezeApplication_Book" FromRole="UnfreezeApplication" ToRole="Book" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_UnfreezeApplication_Review" FromRole="UnfreezeApplication" ToRole="Review" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UnfreezeApplication_User" FromRole="UnfreezeApplication" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_UnfreezeApplication_User1" FromRole="UnfreezeApplication" ToRole="User" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -576,6 +669,8 @@
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_User" FromRole="User" ToRole="Review" />
           <NavigationProperty Name="RoleApplication" Relationship="Self.FK_RoleApplication_User" FromRole="User" ToRole="RoleApplication" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_User_Roles" FromRole="User" ToRole="Roles" />
+          <NavigationProperty Name="UnfreezeApplication" Relationship="Self.FK_UnfreezeApplication_User" FromRole="User" ToRole="UnfreezeApplication" />
+          <NavigationProperty Name="UnfreezeApplication1" Relationship="Self.FK_UnfreezeApplication_User1" FromRole="User" ToRole="UnfreezeApplication" />
         </EntityType>
         <Association Name="FK_Book_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -633,6 +728,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Review">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeApplication_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
               <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
@@ -745,6 +852,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UnfreezeApplication_Review">
+          <End Role="Review" Type="Self.Review" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Review">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RoleApplication_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="RoleApplication" Type="Self.RoleApplication" Multiplicity="*" />
@@ -781,7 +900,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ShootNBunnyEntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_UnfreezeApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeApplication_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UnfreezeApplication" Type="Self.UnfreezeApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeApplication">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShootNBunnyEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Book" EntityType="Self.Book" />
           <EntitySet Name="BookGenre" EntityType="Self.BookGenre" />
           <EntitySet Name="Complaint" EntityType="Self.Complaint" />
@@ -794,6 +937,7 @@
           <EntitySet Name="RoleApplication" EntityType="Self.RoleApplication" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UnfreezeApplication" EntityType="Self.UnfreezeApplication" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
             <End Role="User" EntitySet="User" />
@@ -814,6 +958,10 @@
           <AssociationSet Name="FK_Review_Book" Association="Self.FK_Review_Book">
             <End Role="Book" EntitySet="Book" />
             <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_Book" Association="Self.FK_UnfreezeApplication_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
           </AssociationSet>
           <AssociationSet Name="FK_BookGenre_Genre" Association="Self.FK_BookGenre_Genre">
             <End Role="Genre" EntitySet="Genre" />
@@ -851,6 +999,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_Review" Association="Self.FK_UnfreezeApplication_Review">
+            <End Role="Review" EntitySet="Review" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
           <AssociationSet Name="FK_RoleApplication_Roles" Association="Self.FK_RoleApplication_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RoleApplication" EntitySet="RoleApplication" />
@@ -863,13 +1015,21 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_User" Association="Self.FK_UnfreezeApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeApplication_User1" Association="Self.FK_UnfreezeApplication_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnfreezeApplication" EntitySet="UnfreezeApplication" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ShootNBunnyModelContainer" CdmEntityContainer="ShootNBunnyEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShootNBunnyModelContainer" CdmEntityContainer="ShootNBunnyEntities">
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="ShootNBunnyModel.Book">
               <MappingFragment StoreEntitySet="Book">
@@ -990,6 +1150,18 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnfreezeApplication">
+            <EntityTypeMapping TypeName="ShootNBunnyModel.UnfreezeApplication">
+              <MappingFragment StoreEntitySet="UnfreezeApplication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

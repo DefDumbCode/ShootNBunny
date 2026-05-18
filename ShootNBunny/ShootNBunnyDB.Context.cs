@@ -13,10 +13,10 @@ namespace ShootNBunny
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ShootNBunnyEntities1 : DbContext
+    public partial class ShootNBunnyEntities : DbContext
     {
-        public ShootNBunnyEntities1()
-            : base("name=ShootNBunnyEntities1")
+        public ShootNBunnyEntities()
+            : base("name=ShootNBunnyEntities")
         {
         }
     
@@ -37,6 +37,7 @@ namespace ShootNBunny
         public virtual DbSet<RoleApplication> RoleApplication { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<UnfreezeApplication> UnfreezeApplication { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

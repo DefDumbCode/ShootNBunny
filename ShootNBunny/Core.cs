@@ -8,10 +8,10 @@ namespace ShootNBunny
 {
     internal class Core
     {
-        public static ShootNBunnyEntities1 Context = new ShootNBunnyEntities1();
+        public static ShootNBunnyEntities Context = new ShootNBunnyEntities();
         public static void Update()
         {
-            Context = new ShootNBunnyEntities1();
+            Context = new ShootNBunnyEntities();
         }
     }
 }
