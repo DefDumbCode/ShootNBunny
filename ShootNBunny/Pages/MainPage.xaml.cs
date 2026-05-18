@@ -39,30 +39,42 @@ namespace ShootNBunny.Pages.FunctionPages
 
         private void RoleBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            switch (RoleCheck()) 
+            {
+                case "Администратор":;
+                    ContentFrame.Navigate(new AdminPage());
+                    break;
+                case "Автор":
+                    ContentFrame.Navigate(new AuthorPage());
+                    break;
+                case "Читатель":
+                    break;
+            }
         }
 
         private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProfilePage(MainWindow.user));
+            ContentFrame.Navigate(new ProfilePage(MainWindow.user));
         }
 
-        private void RoleCheck()
+        private string RoleCheck()
         {
             switch (MainWindow.user.RoleID)
             {
                 // Админ
                 case 1:
                     RoleAct.Content = "Администрирование";
-                    break;
+                    return "Администратор";
                 // Автор
                 case 2:
                     RoleAct.Content = "Ваши книги";
-                    break;
+                    return "Автор";
                 // Читатель
                 case 3:
                     RoleBtn.Visibility = Visibility.Hidden;
-                    break;
+                    return "Читатель";
+                default:
+                    return "Читатель";
             }
         }
         

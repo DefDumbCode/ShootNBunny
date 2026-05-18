@@ -23,9 +23,12 @@ namespace ShootNBunny.Pages.FunctionPages
         public static List<Book> books = Core.Context.Book.OrderBy(b => b.Name).ToList();
         public static List<string> genres = new List<string>() { "Все" };
         public static List<string> sort = new List<string>() {"Рейтингу", "Названию" };
+        public static List<Reading> readings = Core.Context.Reading.ToList();
+        public static List<ReadingStatus> readingStatuses = Core.Context.ReadingStatus.ToList();
         public CatalogPage()
         {
             InitializeComponent();
+            books = Core.Context.Book.OrderBy(b => b.Name).ToList();
             BooksLB.ItemsSource = books;
             genres = new List<string>() { "Все" };
             foreach(Genre genre in Core.Context.Genre.ToList())
@@ -37,6 +40,8 @@ namespace ShootNBunny.Pages.FunctionPages
 
             SortByCB.ItemsSource = sort;
             SortByCB.SelectedIndex = 0;
+
+            ReadingCB.ItemsSource = readingStatuses.Select(rs => rs.Name).ToList();
         }
 
         private void SortByCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -89,6 +94,40 @@ namespace ShootNBunny.Pages.FunctionPages
                 
             }
             BooksLB.ItemsSource = filtered;
+        }
+
+        private void BooksLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ReadingCB.SelectedItem = null;
+            Reading reading = readings.FirstOrDefault(r => r.User == MainWindow.user && r.Book == BooksLB.SelectedItem);
+            if (reading != null)
+            {
+                ReadingCB.SelectedItem = reading.ReadingStatus.Name;
+            }
+        }
+
+        private void ReadingCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Reading reading = readings.FirstOrDefault(r => r.User == MainWindow.user && r.Book == BooksLB.SelectedItem);
+            if (ReadingCB.SelectedItem != null)
+            {
+                if (reading != null)
+                {
+                    reading.StatusID = readingStatuses.First(rs => rs.Name == ReadingCB.SelectedItem.ToString()).ID;
+                }
+                else
+                {
+                    reading = new Reading()
+                    {
+                        StatusID = readingStatuses.First(rs => rs.Name == ReadingCB.SelectedItem.ToString()).ID,
+                        UserID = MainWindow.user.ID,
+                        BookID = (BooksLB.SelectedItem as Book).ID,
+                    };
+                    Core.Context.Reading.Add(reading);
+                }
+                Core.Context.SaveChanges();
+                readings = Core.Context.Reading.ToList();
+            }
         }
     }
 }

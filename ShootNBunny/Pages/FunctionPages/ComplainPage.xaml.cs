@@ -64,7 +64,7 @@ namespace ShootNBunny.Pages.FunctionPages
 
             switch (complaintObj)
             {
-                case "Отыв":
+                case "Отзыв":
                     complaint.ReviewID = objID;
                     break;
                 case "Автор":

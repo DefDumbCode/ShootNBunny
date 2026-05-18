@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="BooksLB" MouseDoubleClick="BooksLB_MouseDoubleClick"
+        <ListBox x:Name="BooksLB" MouseDoubleClick="BooksLB_MouseDoubleClick" SelectionChanged="BooksLB_SelectionChanged"
                  Grid.Column="0"
                  Margin="10 15"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -58,5 +58,12 @@
                       Width="120" Height="35" Margin="10"
                       SelectionChanged="GenresCB_SelectionChanged"/>
         </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+            <Label Content="Статус" FontSize="16" Margin="10"/>
+            <ComboBox x:Name="ReadingCB"
+          Height="35" Width="150" Margin="20 0 20 20"
+                      SelectionChanged="ReadingCB_SelectionChanged"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

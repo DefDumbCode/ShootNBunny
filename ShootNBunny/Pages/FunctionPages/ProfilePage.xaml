@@ -18,7 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
@@ -27,17 +27,17 @@
                        FontSize="20"/>
                 <StackPanel Orientation="Horizontal" Margin="20 0">
                     <Label Content="Логин:" FontSize="18"/>
-                    <TextBlock Text="{Binding Login}" FontSize="18"/>
+                    <TextBlock Text="{Binding Login}" FontSize="18" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="20 0">
                     <Label Content="Email:" FontSize="18"/>
-                    <TextBlock Text="{Binding Email}" FontSize="18"/>
+                    <TextBlock Text="{Binding Email}" FontSize="18" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="20 0">
                     <Label Content="Роль:" FontSize="18"/>
-                    <TextBlock Text="{Binding Roles.Name}" FontSize="18"/>
+                    <TextBlock Text="{Binding Roles.Name}" FontSize="18" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
 
@@ -46,18 +46,21 @@
                     Content="Хочу стать автором"
                     Click="AuthorBtn_Click"/>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="20">
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="20 0">
                 <TextBlock Grid.Row="2" Text="{Binding FrozenStatus}" HorizontalAlignment="Left" 
-                    Height="35" Width="200" FontSize="20"/>
+                    Height="35" Width="200" FontSize="16"/>
                 <Button x:Name="FreezeComplaintBtn"
                         Height="35" Width="125" Margin="20 0"
-                        Content="Оспорить"/>
+                        Content="Оспорить"
+                        Click="FreezeComplaintBtn_Click"/>
             </StackPanel>
+            <TextBlock x:Name="FreezeReasonTB" Grid.Row="3" 
+                       Margin="20 0" Text="Причина заморозки: "/>
         </Grid>
         
         <Label Grid.Column="1" VerticalAlignment="Top" 
                Height="30"  Margin="20 20 20 0"
-               Content="Ваши отзывы"/>
+               Content="Ваши отзывы" FontSize="18"/>
         <ListBox x:Name="ReviewsLB" Grid.Column="1"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10 60 10 20" d:ItemsSource="{d:SampleData ItemCount=5}"
             Padding="10 5">
@@ -65,7 +68,7 @@
                 <DataTemplate>
                     <StackPanel Margin="0 0 0 5">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="ReviewAuthor" Text="{Binding User.Name}" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="BookName" Text="{Binding Book.Name}" Margin="0 0 10 0"/>
                             <TextBlock x:Name="ReviewRate" Text="{Binding Rate, StringFormat= Оценка: {0}}"/>
                         </StackPanel>
 

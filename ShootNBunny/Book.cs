@@ -20,6 +20,7 @@ namespace ShootNBunny
             this.BookGenre = new HashSet<BookGenre>();
             this.Complaint = new HashSet<Complaint>();
             this.Reading = new HashSet<Reading>();
+            this.Review = new HashSet<Review>();
         }
     
         public int ID { get; set; }
@@ -38,5 +39,7 @@ namespace ShootNBunny
         public virtual ICollection<Complaint> Complaint { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reading> Reading { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

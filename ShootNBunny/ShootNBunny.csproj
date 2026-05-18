@@ -66,23 +66,37 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Book.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BookGenre.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Complaint.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ComplaintFreeze.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
     <Compile Include="Genre.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\BookPreview.cs" />
+    <Compile Include="Logic\ComplaintPreview.cs" />
+    <Compile Include="Logic\FrozenPreview.cs" />
     <Compile Include="Logic\UserStatus.cs" />
+    <Compile Include="Pages\FunctionPages\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\ApplicationPage.xaml.cs">
+      <DependentUpon>ApplicationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\AuthorPage.xaml.cs">
+      <DependentUpon>AuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\BookCreationPage.xaml.cs">
+      <DependentUpon>BookCreationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FunctionPages\BookPage.xaml.cs">
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
@@ -92,8 +106,17 @@
     <Compile Include="Pages\FunctionPages\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FunctionPages\ChangePswrdPage.xaml.cs">
+      <DependentUpon>ChangePswrdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\ChangeRolePage.xaml.cs">
+      <DependentUpon>ChangeRolePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FunctionPages\ComplainPage.xaml.cs">
       <DependentUpon>ComplainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FunctionPages\FreezeComplainPage.xaml.cs">
+      <DependentUpon>FreezeComplainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FunctionPages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -101,47 +124,50 @@
     <Compile Include="Pages\FunctionPages\ReadingPage.xaml.cs">
       <DependentUpon>ReadingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FunctionPages\RedactionPage.xaml.cs">
+      <DependentUpon>RedactionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FunctionPages\ReviewCreationPage.xaml.cs">
       <DependentUpon>ReviewCreationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reading.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ReadingStatus.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Reason.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleApplication.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyDB.Context.cs">
+    <Compile Include="ShootNBunnyyDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyDB.Context.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyDB.cs">
+    <Compile Include="ShootNBunnyyDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ShootNBunnyDB.Designer.cs">
+    <Compile Include="ShootNBunnyyDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ShootNBunnyDB.tt</DependentUpon>
+      <DependentUpon>ShootNBunnyyDB.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +185,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FunctionPages\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\ApplicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\AuthorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\BookCreationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FunctionPages\BookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,7 +213,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FunctionPages\ChangePswrdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\ChangeRolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FunctionPages\ComplainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\FreezeComplainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\FunctionPages\ReadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FunctionPages\RedactionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,12 +286,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="ShootNBunnyDB.edmx">
+    <EntityDeploy Include="ShootNBunnyyDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShootNBunnyDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShootNBunnyyDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ShootNBunnyDB.edmx.diagram">
-      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
+    <None Include="ShootNBunnyyDB.edmx.diagram">
+      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -251,15 +309,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ShootNBunnyDB.Context.tt">
+    <Content Include="ShootNBunnyyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
-      <LastGenOutput>ShootNBunnyDB.Context.cs</LastGenOutput>
+      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
+      <LastGenOutput>ShootNBunnyyDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ShootNBunnyDB.tt">
+    <Content Include="ShootNBunnyyDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShootNBunnyDB.edmx</DependentUpon>
-      <LastGenOutput>ShootNBunnyDB.cs</LastGenOutput>
+      <DependentUpon>ShootNBunnyyDB.edmx</DependentUpon>
+      <LastGenOutput>ShootNBunnyyDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

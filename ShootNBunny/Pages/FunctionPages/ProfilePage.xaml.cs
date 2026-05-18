@@ -27,12 +27,26 @@ namespace ShootNBunny.Pages.FunctionPages
             InitializeComponent();
             this.user_ = user;
             DataContext = user_;
-            if(user_.FrozenStatus == "")
+            ReviewsLB.ItemsSource = Core.Context.Review.Where(r => r.UserID == user_.ID).ToList();
+
+            if(!user_.Frozen)
             {
                 FreezeComplaintBtn.Visibility = Visibility.Hidden;
             }
+            else
+            {
+                List<string> complaint_reasons = Core.Context.Complaint.Where(c => (c.AuthorID == user.ID 
+                || c.Review.UserID == user.ID 
+                || c.Book.User.ID == user.ID)
+                && c.Satisfied).Select(c => c.Reason.Name).ToList();
+                foreach(string reason in complaint_reasons)
+                {
+                    FreezeReasonTB.Text += reason;
+                    FreezeReasonTB.Text += "\n";
+                }
+            }
 
-            if(user.Roles.Name != "Пользователь")
+            if (user.Roles.Name != "Читатель")
             {
                 AuthorBtn.Visibility = Visibility.Hidden;
             }
@@ -41,7 +55,19 @@ namespace ShootNBunny.Pages.FunctionPages
 
         private void AuthorBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            if(user_.Frozen)
+            {
+                MessageBox.Show("Замороженные пользователи не могут писать книги и отзывы", "Внимание");
+            }
+            else
+            {
+                NavigationService.Navigate(new ApplicationPage());
+            }
+        }
+
+        private void FreezeComplaintBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FreezeComplainPage());
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿<Page x:Class="ShootNBunny.Pages.FunctionPages.FreezeComplainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShootNBunny.Pages.FunctionPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FreezeComplainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Label
+               Margin="20 0"
+               FontSize="18"
+               Content="Комментарий к заявке"/>
+            <TextBox x:Name="CommentTB" MinHeight="300" Margin="20 10" Padding="10"
+                FontSize="16" TextChanged="CommentTB_TextChanged"/>
+        </StackPanel>
+
+        <Button x:Name="SendBtn" Grid.Row="1" HorizontalAlignment="Right"
+        Width="150" Height="50" Margin="20 0"
+        Content="Отправить"
+        Click="SendBtn_Click" IsEnabled="False"/>
+
+        <Button x:Name="CancelBtn" Grid.Row="1" HorizontalAlignment="Left"
+        Width="150" Height="50" Margin="20 0"
+        Content="Отмена"
+        Click="CancelBtn_Click"/>
+    </Grid>
+</Page>

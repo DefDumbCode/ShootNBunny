@@ -1,0 +1,184 @@
+﻿<Page x:Class="ShootNBunny.Pages.FunctionPages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShootNBunny.Pages.FunctionPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Жалобы" HorizontalAlignment="Center" FontSize="14"></Label>
+        <ListBox x:Name="ComplaintLB" Grid.Row="1" Grid.Column="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding ComplainType, StringFormat=Тип: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding ComplaintObjName}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Reason.Name}" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="SatisfyComplaintBtn" Height="15" Width="15" Margin="0 0" Content="✔" FontSize="8" Click="SatisfyComplaintBtn_Click"/>
+                            <Button x:Name="UnSatisfyComplaintBtn" Height="15" Width="15" Margin="10 0"  Content="❌" FontSize="8" Click="UnSatisfyComplaintBtn_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+
+
+        <Label Grid.Row="0" Grid.Column="1" Content="Замороженные" HorizontalAlignment="Center" FontSize="14"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="FrozenUsersLB" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name, StringFormat=Пользователь {0}}" TextWrapping="Wrap"/>
+                            <Button x:Name="UnfreezeUserBtn" Height="20" Width="100" Margin="0 5" Content="Разморозить" FontSize="10" Click="UnfreezeUserBtn_Click"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <ListBox x:Name="FrozenBooksLB" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name, StringFormat=Книга: {0}}" TextWrapping="Wrap"/>
+                            <Button x:Name="UnfreezeBoolBtn" Height="20" Width="100" Margin="0 5" Content="Разморозить" FontSize="10" Click="UnfreezeBoolBtn_Click"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <ListBox x:Name="FrozenReviewsLB" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding UserID, StringFormat=Отзыв {0}}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Rate}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                            <Button x:Name="UnfreezeReviewBtn" Height="20" Width="100" Margin="0 5" Content="Разморозить" FontSize="10" Click="UnfreezeReviewBtn_Click"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+        </Grid>
+
+        <Label Grid.Row="0" Grid.Column="2" Content="Заявки на &#10;авторство" HorizontalAlignment="Center" FontSize="14"/>
+        <ListBox x:Name="ApplicationLB" Grid.Row="1" Grid.Column="2"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding User.Name}"/>
+                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AcceptBtn" Height="20" Width="25" Margin="0 0" Content="✔" FontSize="10" Click="AcceptBtn_Click"/>
+                            <Button x:Name="RejectBtn" Height="20" Width="25" Margin="10 0" Content="❌" FontSize="10" Click="RejectBtn_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Label Grid.Row="0" Grid.Column="3" Content="Заявки на &#10;разморозку" HorizontalAlignment="Center" FontSize="14"/>
+        <ListBox x:Name="FreezeComplaintLB" Grid.Row="1" Grid.Column="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding User}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Descripton}" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AcceptUnfreezeBtn" Height="20" Width="25" Margin="0 0" Content="✔" FontSize="10" Click="AcceptUnfreezeBtn_Click"/>
+                            <Button x:Name="RejectUnfreezeBtn" Height="20" Width="25" Margin="10 0" Content="❌" FontSize="10" Click="RejectUnfreezeBtn_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+        <Label Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center"  Content="Пользователи" FontSize="14"/>
+        <ListBox x:Name="UsersLB" Grid.Row="1" Grid.Column="4" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Login}"/>
+                        <TextBlock Text="{Binding Roles.Name}"/>
+                        <Button x:Name="ChangeRole" Content="Сменить роль" Margin="0 5" FontSize="10" Click="ChangeRole_Click"/>
+                        <Button x:Name="ChangePsswrd" Content="Сменить пароль" FontSize="10" Click="ChangePsswrd_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+    </Grid>
+</Page>

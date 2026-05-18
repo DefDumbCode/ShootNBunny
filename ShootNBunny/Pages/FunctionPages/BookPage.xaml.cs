@@ -150,14 +150,22 @@ namespace ShootNBunny.Pages.FunctionPages
 
         private void CreateReviewBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(reviews.FirstOrDefault(r => r.UserID == MainWindow.user.ID && r.BookID == books.ID) == null)
+            if (MainWindow.user.Frozen == true)
             {
-                NavigationService.Navigate(new ReviewCreationPage(books));
+                MessageBox.Show("Замороженные пользователи не могут писать книги и отзывы", "Внимание");
             }
             else
             {
-                MessageBox.Show("Вы уже написали отзыв!");
+                if (reviews.FirstOrDefault(r => r.UserID == MainWindow.user.ID && r.BookID == books.ID) == null)
+                {
+                    NavigationService.Navigate(new ReviewCreationPage(books));
+                }
+                else
+                {
+                    MessageBox.Show("Вы уже написали отзыв!");
+                }
             }
+            
         }
     }
 }

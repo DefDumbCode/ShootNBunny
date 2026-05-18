@@ -16,11 +16,12 @@ namespace ShootNBunny
     {
         public int ID { get; set; }
         public int ReasonID { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public Nullable<int> AuthorID { get; set; }
         public Nullable<int> ReviewID { get; set; }
         public Nullable<int> BookID { get; set; }
         public string Comment { get; set; }
+        public bool Satisfied { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Reason Reason { get; set; }

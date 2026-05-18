@@ -13,10 +13,10 @@ namespace ShootNBunny
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ShootNBunnyEntities : DbContext
+    public partial class ShootNBunnyEntities1 : DbContext
     {
-        public ShootNBunnyEntities()
-            : base("name=ShootNBunnyEntities")
+        public ShootNBunnyEntities1()
+            : base("name=ShootNBunnyEntities1")
         {
         }
     

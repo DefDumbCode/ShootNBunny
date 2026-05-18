@@ -1,0 +1,65 @@
+﻿<Page x:Class="ShootNBunny.Pages.FunctionPages.BookCreationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ShootNBunny.Pages.FunctionPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BookCreationPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="SaveBtn" VerticalAlignment="Top"
+            Height="50" Margin="10 30"
+            Content="Далее"
+            Click="SaveBtn_Click"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="20 0" Grid.ColumnSpan="2">
+                <Label Content="Название:" FontSize="18" VerticalAlignment="Center"/>
+                <TextBox x:Name="BookNameTB" Width="300" FontSize="18" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" Margin="20 0">
+                <Label Content="Ссылка на обложку:" FontSize="18" VerticalAlignment="Center"/>
+                <TextBox x:Name="CoverPathTB" Width="300" FontSize="18" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <Label Content="Описание" Grid.Row="2" FontSize="18" Margin="20 10" VerticalAlignment="Top"/>
+            <TextBox x:Name="DescTB" Grid.Row="2"
+                     Margin="20 50 20 20" Padding="10"/>
+
+            <ListBox Grid.Row="2" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 x:Name="GenreList" Margin="10 20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Name}"
+                              x:Name="GenreBox" Checked="GenreBox_Checked" 
+                              Unchecked="GenreBox_Unchecked"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+        
+
+        <Button x:Name="CancelBtn" VerticalAlignment="Bottom"
+            Height="50" Margin="10 30"
+            Content="Назад"
+            Click="CancelBtn_Click"/>
+    </Grid>
+</Page>

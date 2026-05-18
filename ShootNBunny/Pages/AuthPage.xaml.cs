@@ -45,6 +45,11 @@ namespace ShootNBunny.Pages
                     MainWindow.user = login_try;
                     NavigationService.Navigate(new MainPage());
                 }
+                else
+                {
+                    MessageBox.Show("Неправильно введен логин или пароль!");
+                    PasswordTB.Text = "";
+                }
             }
             else
             {

@@ -32,11 +32,12 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReasonID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
           <Property Name="AuthorID" Type="int" />
           <Property Name="ReviewID" Type="int" />
           <Property Name="BookID" Type="int" />
           <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Satisfied" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ComplaintFreeze">
           <Key>
@@ -200,7 +201,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Complaint_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -268,6 +269,18 @@
             </Principal>
             <Dependent Role="Reading">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -381,6 +394,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Reading" EntitySet="Reading" />
           </AssociationSet>
+          <AssociationSet Name="FK_Review_Book" Association="Self.FK_Review_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
           <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
             <End Role="User" EntitySet="User" />
             <End Role="Review" EntitySet="Review" />
@@ -419,6 +436,7 @@
           <NavigationProperty Name="BookGenre" Relationship="Self.FK_BookGenre_Book" FromRole="Book" ToRole="BookGenre" />
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Book" FromRole="Book" ToRole="Complaint" />
           <NavigationProperty Name="Reading" Relationship="Self.FK_Reading_Book" FromRole="Book" ToRole="Reading" />
+          <NavigationProperty Name="Review" Relationship="Self.FK_Review_Book" FromRole="Book" ToRole="Review" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -436,11 +454,12 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReasonID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
           <Property Name="AuthorID" Type="Int32" />
           <Property Name="ReviewID" Type="Int32" />
           <Property Name="BookID" Type="Int32" />
           <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Satisfied" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Complaint_Book" FromRole="Complaint" ToRole="Book" />
           <NavigationProperty Name="Reason" Relationship="Self.FK_Complaint_Reason" FromRole="Complaint" ToRole="Reason" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Complaint_Review" FromRole="Complaint" ToRole="Review" />
@@ -504,6 +523,7 @@
           <Property Name="Rate" Type="Byte" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Frozen" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Review_Book" FromRole="Review" ToRole="Book" />
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Review" FromRole="Review" ToRole="Complaint" />
           <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
         </EntityType>
@@ -605,6 +625,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Review_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BookGenre_Genre">
           <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
           <End Role="BookGenre" Type="Self.BookGenre" Multiplicity="*" />
@@ -642,7 +674,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Complaint_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -749,7 +781,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ShootNBunnyEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ShootNBunnyEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Book" EntityType="Self.Book" />
           <EntitySet Name="BookGenre" EntityType="Self.BookGenre" />
           <EntitySet Name="Complaint" EntityType="Self.Complaint" />
@@ -778,6 +810,10 @@
           <AssociationSet Name="FK_Reading_Book" Association="Self.FK_Reading_Book">
             <End Role="Book" EntitySet="Book" />
             <End Role="Reading" EntitySet="Reading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Book" Association="Self.FK_Review_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Review" EntitySet="Review" />
           </AssociationSet>
           <AssociationSet Name="FK_BookGenre_Genre" Association="Self.FK_BookGenre_Genre">
             <End Role="Genre" EntitySet="Genre" />
@@ -833,7 +869,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ShootNBunnyModelContainer" CdmEntityContainer="ShootNBunnyEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShootNBunnyModelContainer" CdmEntityContainer="ShootNBunnyEntities1">
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="ShootNBunnyModel.Book">
               <MappingFragment StoreEntitySet="Book">
@@ -867,6 +903,7 @@
                 <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Satisfied" ColumnName="Satisfied" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
