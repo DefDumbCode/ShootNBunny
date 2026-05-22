@@ -20,7 +20,7 @@ namespace ShootNBunny.Pages.FunctionPages
     /// </summary>
     public partial class BookPage : Page
     {
-        public static List<Review> reviews = Core.Context.Review.ToList();
+        public static List<Review> reviews = Core.Context.Review.Where(r => !r.Frozen).ToList();
         public static List<ReadingStatus> readingStatuses = Core.Context.ReadingStatus.ToList();
         public Book books {  get; set; }
         public BookPage(Book book)
@@ -35,7 +35,7 @@ namespace ShootNBunny.Pages.FunctionPages
                 FreezeReviewBtn.Visibility = Visibility.Hidden;
             }
 
-            reviews = Core.Context.Review.ToList();
+            reviews = Core.Context.Review.Where(r => !r.Frozen).ToList();
             ReviewsLB.ItemsSource = reviews.Where(r => r.BookID == book.ID).ToList();
 
             ReadStatusCB.ItemsSource = readingStatuses.Select(rs => rs.Name).ToList();

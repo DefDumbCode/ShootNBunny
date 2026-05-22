@@ -11,71 +11,45 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                
-                <StackPanel Margin="5 10">
-                    <Button x:Name="BooksCatalogBtn" Height="60"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Margin="5 10">
+                <Button x:Name="BooksCatalogBtn" Height="60" Margin="10"
                             Click="BooksCatalogBtn_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Height="50" Width="50" Margin="5"/>
-                                <Label Content="Каталог книг" VerticalAlignment="Center"
-                                       FontSize="10"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+                    <Image Height="50" Width="50" Margin="5" Source="https://cdn-icons-png.flaticon.com/512/3486/3486568.png"/>
+                </Button>
 
-                    <Button x:Name="BooklistBtn" Height="60"
+                <Button x:Name="BooklistBtn" Height="60" Margin="10"
                             Click="BooklistBtn_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Height="50" Width="50"/>
-                                <Label Content="Списки книг" VerticalAlignment="Center"
-                                       FontSize="10"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+                    <Image Height="50" Width="50" Source="https://cdn-icons-png.freepik.com/256/1027/1027221.png?semt=ais_white_label"/>
+                </Button>
 
-                    <Button x:Name="RoleBtn" Height="60"
+                <Button x:Name="RoleBtn" Height="60" Margin="10"
                             Click="RoleBtn_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image x:Name="RoleImg" Height="50" Width="50"/>
-                                <Label x:Name="RoleAct" Content="Кнопка роли" VerticalAlignment="Center"
-                                       FontSize="10"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
+                    <Image x:Name="RoleImg" Height="50" Width="50" Source="https://cdn-icons-png.flaticon.com/512/7651/7651045.png"/>
+                </Button>
+            </StackPanel>
 
-                <StackPanel Grid.Row="1" VerticalAlignment="Bottom"
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom"
                             Margin="5 0 5 20">
-                    <TextBlock x:Name="FrozenStatusTB"
+                <TextBlock x:Name="FrozenStatusTB"
                                Margin="0 0 0 10"/>
-                    <Button x:Name="ProfileBtn" Height="60"
+                <Button x:Name="ProfileBtn" Height="60" Margin="10"
                             Click="ProfileBtn_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Height="50" Width="50"/>
-                                <Label Content="Профиль" VerticalAlignment="Center"
-                                       FontSize="10"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
+                    <Image Height="50" Width="50" Source="https://cdn3.iconfinder.com/data/icons/smoothfill-action/30/action_030-account-user-profile-avatar-512.png"/>
+                </Button>
+            </StackPanel>
 
-            </Grid>
-        </ScrollViewer>
-        
+        </Grid>
+
         <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Grid.Column="1"/>
     </Grid>
 </Page>

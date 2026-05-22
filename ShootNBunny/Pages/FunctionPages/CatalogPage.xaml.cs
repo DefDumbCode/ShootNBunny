@@ -20,7 +20,7 @@ namespace ShootNBunny.Pages.FunctionPages
     /// </summary>
     public partial class CatalogPage : Page
     {
-        public static List<Book> books = Core.Context.Book.OrderBy(b => b.Name).ToList();
+        public static List<Book> books = Core.Context.Book.Where(b => !b.Frozen).OrderBy(b => b.Name).ToList();
         public static List<string> genres = new List<string>() { "Все" };
         public static List<string> sort = new List<string>() {"Рейтингу", "Названию" };
         public static List<Reading> readings = Core.Context.Reading.ToList();
@@ -28,7 +28,7 @@ namespace ShootNBunny.Pages.FunctionPages
         public CatalogPage()
         {
             InitializeComponent();
-            books = Core.Context.Book.OrderBy(b => b.Name).ToList();
+            books = Core.Context.Book.Where(b => !b.Frozen).OrderBy(b => b.Name).ToList();
             BooksLB.ItemsSource = books;
             genres = new List<string>() { "Все" };
             foreach(Genre genre in Core.Context.Genre.ToList())

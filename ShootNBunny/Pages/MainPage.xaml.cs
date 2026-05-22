@@ -63,11 +63,9 @@ namespace ShootNBunny.Pages.FunctionPages
             {
                 // Админ
                 case 1:
-                    RoleAct.Content = "Администрирование";
                     return "Администратор";
                 // Автор
                 case 2:
-                    RoleAct.Content = "Ваши книги";
                     return "Автор";
                 // Читатель
                 case 3:
@@ -77,6 +75,10 @@ namespace ShootNBunny.Pages.FunctionPages
                     return "Читатель";
             }
         }
-        
+
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+
+        }
     }
 }
